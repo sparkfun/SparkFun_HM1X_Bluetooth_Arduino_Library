@@ -1,0 +1,124 @@
+#######################################
+# Syntax Coloring Map 
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+SparkFun_HM1X_Bluetooth_Arduino_Library	KEYWORD1
+HM1X_BT	KEYWORD1
+HM1X_edr_mode_t	KEYWORD1
+HM1X_ble_mode_t	KEYWORD1
+HM1X_error_t	KEYWORD1
+HM1X_edr_advert_t	KEYWORD1
+HM1X_mtu_size_t	KEYWORD1
+HM1X_model_t	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+connected	KEYWORD2
+connectedEdr	KEYWORD2
+connectedBle	KEYWORD2
+setupPoll	KEYWORD2
+available	KEYWORD2
+read	KEYWORD2
+write	KEYWORD2
+testOrDisconnect	KEYWORD2
+disconnect	KEYWORD2
+test	KEYWORD2
+factoryDefaults	KEYWORD2
+reset	KEYWORD2
+version	KEYWORD2
+notifyInfo	KEYWORD2
+notifyMode	KEYWORD2
+notify	KEYWORD2
+getEdrName	KEYWORD2
+setEdrName	KEYWORD2
+getBleName	KEYWORD2
+setBleName	KEYWORD2
+edrAddress	KEYWORD2
+bleAddress	KEYWORD2
+lastEdrAddress	KEYWORD2
+lastBleAddress	KEYWORD2
+clearEdrBond	KEYWORD2
+clearBleBond	KEYWORD2
+clearEdrConnected	KEYWORD2
+clearBleConnected	KEYWORD2
+enableHighSpeedSPP	KEYWORD2
+enableDualMode	KEYWORD2
+enableRemoteControl	KEYWORD2
+enableAtoB	KEYWORD2
+enableAuthenticationMode	KEYWORD2
+getEdrPin	KEYWORD2
+getBlePin	KEYWORD2
+setEdrPin	KEYWORD2
+setBlePin	KEYWORD2
+setCod	KEYWORD2
+enableUpdateConnectionParameter	KEYWORD2
+iBeacon	KEYWORD2
+enableiBeacon	KEYWORD2
+getiBeaconUUID	KEYWORD2
+setiBeaconUUID	KEYWORD2
+getiBeaconMajor	KEYWORD2
+setiBeaconMajor	KEYWORD2
+getiBeaconMinor	KEYWORD2
+setiBeaconMinor	KEYWORD2
+getiBeaconPower	KEYWORD2
+setiBeaconPower	KEYWORD2
+setMtuSize	KEYWORD2
+getEdrAdvertType	KEYWORD2
+setEdrAdvertType	KEYWORD2
+enableSafeMode	KEYWORD2
+disableBleAddress	KEYWORD2
+enableSystemKey	KEYWORD2
+setLedMode	KEYWORD2
+readPio	KEYWORD2
+writePio	KEYWORD2
+setBaud	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+HM10	LITERAL1
+HM11	LITERAL1
+HM12	LITERAL1
+HM13	LITERAL1
+HM14	LITERAL1
+HM15	LITERAL1
+HM16	LITERAL1
+HM17	LITERAL1
+HM18	LITERAL1
+HM19	LITERAL1
+HM1X_OUT_OF_MEMORY	LITERAL1
+HM1X_RX_OVERFLOW	LITERAL1
+HM1X_UNEXPECTED_RESPONSE	LITERAL1
+HM1X_ERROR_NO_CONNECTION	LITERAL1
+HM1X_ERROR_TRY_LATER	LITERAL1
+HM1X_ERROR_READ_ERROR	LITERAL1
+HM1X_ERROR_TIMEOUT	LITERAL1
+HM1X_ERROR_ER	LITERAL1
+HM1X_SUCCESS	LITERAL1
+EDR_SLAVE	LITERAL1
+EDR_MASTER	LITERAL1
+EDR_MODE_INVALID	LITERAL1
+BLE_PERIPHERAL	LITERAL1
+BLE_CENTRAL	LITERAL1
+BLE_MODE_INVALID	LITERAL1
+MTU_SIZE_60	LITERAL1
+MTU_SIZE_120	LITERAL1
+DISCOVERY_AND_CONNECTABLE	LITERAL1
+ONLY_CONNECTABLE	LITERAL1
+BLINK_DISCONNECTED	LITERAL1
+HIGH_DISCONNECTED	LITERAL1
+HM1X_BAUD_4800	LITERAL1
+HM1X_BAUD_9600	LITERAL1
+HM1X_BAUD_19200	LITERAL1
+HM1X_BAUD_38400	LITERAL1
+HM1X_BAUD_57600	LITERAL1
+HM1X_BAUD_115200	LITERAL1
+HM1X_BAUD_230400	LITERAL1
