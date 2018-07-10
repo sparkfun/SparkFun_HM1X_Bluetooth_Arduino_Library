@@ -29,8 +29,8 @@
 HM1X_BT bt;
 
 // BLE and EDR device names
-String edrName = "MyEDR";
-String bleName = "MyBLE";
+String edrName = "MyEDR!";
+String bleName = "MyBLE!";
 
 void setup() {
   Serial.begin(9600); // Serial debug port @ 9600 bps
@@ -54,7 +54,7 @@ void setup() {
     Serial.println("Setting new EDR name");
     // Set EDR device name
     if (bt.setEdrName(edrName) == HM1X_SUCCESS) {
-      Serial.println("Set EDR name");
+      Serial.println("Set EDR name to " + edrName);
       resetRequired = true;
     }
   } else {
@@ -69,9 +69,11 @@ void setup() {
     Serial.println("Setting new BLE name");
     // Set BLE device name
     if (bt.setBleName(bleName) == HM1X_SUCCESS) {
-      Serial.println("Set BLE name");
+      Serial.println("Set BLE name to " + bleName);
       resetRequired = true;
     }
+  } else {
+    Serial.println("BLE name is: " + bleName);
   }
   
   Serial.println("EDR address: " + bt.edrAddress());
@@ -91,5 +93,4 @@ void loop() {
     bt.write((char) Serial.read());
   } 
 }
-
 

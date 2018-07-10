@@ -63,10 +63,11 @@ void setup() {
     Serial.println("Setting new BLE name");
     // Set BLE device name
     if (bt.setBleName(bleName) == HM1X_SUCCESS) {
-      Serial.println("Set BLE name");
-      setName = true;
+      Serial.println("Set BLE name to " + bleName);
       resetRequired = true;
     }
+  } else {
+    Serial.println("BLE name is: " + bleName);
   }
   
   Serial.println("EDR address: " + bt.edrAddress());

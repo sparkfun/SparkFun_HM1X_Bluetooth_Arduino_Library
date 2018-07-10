@@ -61,6 +61,7 @@ void setup() {
   if (bt.setiBeaconUUID(uuid0, uuid1, uuid2, uuid3) == HM1X_SUCCESS) {
     SerialPort.println("Set iBeacon UUID");
   }
+  Serial.println("UUID: " + String(bt.getiBeaconUUID()));
 
   // Set iBeacon major version
   if (bt.setiBeaconMajor(minor) == HM1X_SUCCESS) {

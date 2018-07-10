@@ -57,12 +57,12 @@ void setup() {
     // If set name is different, configure new EDR name
     SerialPort.println("Setting new EDR name");
     // Set EDR device name
-    if (bt.setEdrName(edrName) == HM1X_SUCCESS) {
-      SerialPort.println("Set EDR name");
+    if (bt.setBleName(bleName) == HM1X_SUCCESS) {
+      Serial.println("Set BLE name to " + bleName);
       resetRequired = true;
     }
   } else {
-    SerialPort.println("EDR name is: " + setEdrName);
+    Serial.println("BLE name is: " + bleName);
   }
   
   // getBleName returns a string containing BLE device name
