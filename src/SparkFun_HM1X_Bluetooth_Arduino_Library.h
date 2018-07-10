@@ -3,7 +3,8 @@
   an eye towards expansion for support for HM10/11, HM16/17, HM18/19)
   SparkFun sells these at its website: www.sparkfun.com
   Do you like this library? Help support SparkFun. Buy a board!
-  https://www.sparkfun.com/products/TODO
+  https://www.sparkfun.com/products/14840
+  https://www.sparkfun.com/products/14839
   Written by Jim Lindblom @ SparkFun Electronics, July 3, 2018
   
   The HM13 modules are dual mode, Bluetooth 4.0 modules. They support
@@ -13,8 +14,10 @@
   as well as polling for connect/disconnect messages.
 
   It supports interfacing the module via either hardware or software serial
-  or an I2C interface (using the Qwiic Bluetooth 4.0 module).
-  https://github.com/sparkfunX/TODO
+  or an I2C interface (using the Qwiic Bluetooth 4.0 module). Library is
+  designed to support both the Qwiic Bluetooth and the Bluetooth Mate 4.0:
+  https://github.com/sparkfunX/Bluetooth_Mate_4.0
+  https://github.com/sparkfunX/Qwiic_Bluetooth_HC1x
 
   Development environment specifics:
   Arduino IDE 1.8.5
@@ -52,6 +55,9 @@
 #ifdef HM1X_SOFTWARE_SERIAL_ENABLED
 #include <SoftwareSerial.h>
 #endif
+
+#define QWIIC_BLUETOOTH_DEFAULT_ADDRESS 0x1B
+#define QWIIC_BLUETOOTH_JUMPED_ADDRESS 0x1C
 
 typedef enum {
     HM1X_OUT_OF_MEMORY       = -8,

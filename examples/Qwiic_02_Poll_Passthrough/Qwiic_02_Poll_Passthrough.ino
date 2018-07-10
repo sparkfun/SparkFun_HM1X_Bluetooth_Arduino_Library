@@ -35,8 +35,8 @@ void setup() {
   // in this case takes a TwoWire (I2C) port and the
   // I2C address
   // Returns true on success
-  if (bt.begin(Wire, 0x1B) == false) {
-    Serial.println(F("Failed to connect to the HM-13."));
+  if (bt.begin(Wire, QWIIC_BLUETOOTH_DEFAULT_ADDRESS) == false) {
+    Serial.println("Failed to connect to the HM-13.");
     while (1) ;
   }
   Serial.println("Ready to Bluetooth!");
