@@ -1616,8 +1616,9 @@ String HM1X_BT::getiBeaconUUID(void)
     uuid = (char *) calloc(33, sizeof(char));
     if (getiBeaconUUID(uuid) == HM1X_SUCCESS)
     {
-
+        return String(uuid);
     }
+    return "";
 }
 
 // AT+IBE0, AT+IBE1, AT+IBE2, AT+IBE3 -- Get/Set iBeacon UUID
@@ -2469,14 +2470,26 @@ size_t HM1X_BT::hwPrint(const char * s)
     else if (_wirePort != NULL)
     {
         int charsToWrite = strlen(s);
-        _wirePort->beginTransmission(_wireAddress);
-        _wirePort->write(I2C_CMD_WRITE);
-        for (int i = 0; i < charsToWrite; i++)
+        int charsWritten = 0;
+        // ATtiny85 can only read/write 14 bytes at a time via I2C
+        // Need to split >14 writes into multiple transmissions
+        while (charsToWrite > 0)
         {
-            _wirePort->write(s[i]);
+            int toWrite;
+            if (charsToWrite > 14) toWrite = 14;
+            else toWrite = charsToWrite;
+            
+            _wirePort->beginTransmission(_wireAddress);
+            _wirePort->write(I2C_CMD_WRITE);
+            for (int i = 0; i < toWrite; i++)
+            {
+                _wirePort->write(s[i + charsWritten]);
+            }
+            _wirePort->endTransmission(true);
+            charsToWrite -= toWrite;
+            charsWritten += toWrite;
         }
-        _wirePort->endTransmission(true);
-        return charsToWrite;
+        return charsWritten;
     }
 #endif
     return 0;
@@ -2515,16 +2528,25 @@ int HM1X_BT::readAvailable(char * inString)
     else if (_wirePort != NULL)
     {
         int avail = hwAvailable();
-
-        _wirePort->beginTransmission(_wireAddress);
-        _wirePort->write(I2C_CMD_READ);
-        _wirePort->write(avail);
-        _wirePort->endTransmission(false);
-        _wirePort->requestFrom(_wireAddress, (uint8_t)avail);
-        for (int i = 0; i < avail; i++)
+        int bytesToRead;
+        // I2C on the Tiny can only write out 14(?) bytes at a time.
+        // If there are more than 14 bytes to read, loop through
+        while (avail > 0)
         {
-            char c = (char) _wirePort->read();
-            inString[len++] = c;
+            if (avail > 14) bytesToRead = 14;
+            else bytesToRead = avail;
+
+            _wirePort->beginTransmission(_wireAddress);
+            _wirePort->write(I2C_CMD_READ);
+            _wirePort->write(bytesToRead);
+            _wirePort->endTransmission(false);
+            _wirePort->requestFrom(_wireAddress, (uint8_t)bytesToRead);
+            for (int i = 0; i < bytesToRead; i++)
+            {
+                char c = (char) _wirePort->read();
+                inString[len++] = c;
+            }
+            avail -= bytesToRead;
         }
         inString[len] = 0;
     }
