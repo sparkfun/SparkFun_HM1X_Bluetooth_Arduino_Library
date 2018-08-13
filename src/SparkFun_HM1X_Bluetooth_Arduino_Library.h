@@ -37,13 +37,13 @@
 #include "WProgram.h"
 #endif
 
-#ifdef ARDUINO_AVR_UNO               // Arduino UNO
+#ifdef ARDUINO_ARCH_AVR               // Arduino AVR boards (Uno, Pro Micro, etc.)
 #define HM1X_SOFTWARE_SERIAL_ENABLED // Enable software serial
-#define HM1X_HARDWARE_SERIAL_ENABLED // Enable hardware serial :/
+#define HM1X_HARDWARE_SERIAL_ENABLED // Enable hardware serial
 #define HM1X_I2C_ENABLED
 #endif
 
-#ifdef ARDUINO_ARCH_SAMD              // SAMD21
+#ifdef ARDUINO_ARCH_SAMD              // Arduino SAMD boards (SAMD21, etc.)
 #define HM1X_SOFTWARE_SERIAL_ENABLEDx // Disable software serial
 #define HM1X_HARDWARE_SERIAL_ENABLED
 #define HM1X_I2C_ENABLED
@@ -95,7 +95,7 @@ public:
     boolean begin(SoftwareSerial & softSerial, unsigned long baud = 9600);
 #endif
 #ifdef HM1X_HARDWARE_SERIAL_ENABLED
-    boolean begin(HardwareSerial &serialPort = Serial, unsigned long baud = 9600);
+    boolean begin(HardwareSerial &serialPort, unsigned long baud = 9600);
 #endif
 #ifdef HM1X_I2C_ENABLED
     boolean begin(TwoWire &wirePort, uint8_t address);
